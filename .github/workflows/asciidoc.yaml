@@ -36,11 +36,10 @@ jobs:
       - name: Setup Asciidoc
         run: sudo apt install rubygems make && sudo gem install asciidoctor asciidoctor-pdf
       - name: Build
-        run: make -C docs html && ls -lha docs && find -print
+        run: make -C docs html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: 'docs'
       - name: Deploy to GitHub Pages
         id: deployment
