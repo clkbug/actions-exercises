@@ -34,7 +34,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Setup Asciidoc
-        run: apt install rubygems make && gem install asciidoctor asciidoctor-pdf
+        run: sudo apt install rubygems make && sudo gem install asciidoctor asciidoctor-pdf
       - name: Build
         run: make -C docs html
       - name: Upload artifact
