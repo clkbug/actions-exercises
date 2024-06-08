@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+pyfiles=$(find . -exec file {} + | grep Python | perl -anle 'print $F[0]' -F:)
+
+autoflake ${pyfiles}
+black ${pyfiles}
+isort ${pyfiles}
