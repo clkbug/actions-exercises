@@ -40,6 +40,11 @@ jobs:
         run: sudo apt install r-cran-plotly r-cran-tidyverse r-cran-reticulate r-cran-htmlwidgets python3-plotly
       - name: Build
         run: make -C docs html
+      - name: Update data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          file_pattern: 'docs/data.txt'
+          commit_message: add data
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
