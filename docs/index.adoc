@@ -1,0 +1,54 @@
+= Hello, AsciiDoc
+
+== This is a Level 1 Section!
+
+* .github
+** actions
+* 箇条書きである
+
+== Hoge
+
+あいうえお
+かきくけこ
+さしすせそ
+たちつてと
+なにぬねの
+はひふへほ
+まみむめも
+や　ゆ　よ
+らりるれろ
+わゐ　ゑを
+ん
+
+== いろはうた
+
+いろはにほへと
+ちりぬるを
+わかよたれそ
+つねならむ
+うゐのおくやま
+けふこえて
+あさきゆめみし
+ゑひもせす
+
+== 画像
+
+image::https://picsum.photos/400/400[ランダムな画像]
+
+== 表
+
+.この表はああああ
+[options="header"]
+|===
+|列1|2|3
+|AA|BB|CC
+|===
+
+
+== Python
+
+[source,python]
+----
+include::../python/a.py[]
+----
+
