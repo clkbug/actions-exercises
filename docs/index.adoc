@@ -56,7 +56,7 @@ include::../python/a.py[]
 
 PNG
 
-image::./plot.png[PNG]
+// image::./plot.png[PNG]
 
 SVG
 
