@@ -4,6 +4,11 @@ set -euxo pipefail
 
 pyfiles=$(find . -exec file {} + | grep Python | perl -anle 'print $F[0]' -F:)
 
+# shellcheck disable=SC2086
 autoflake ${pyfiles}
+
+# shellcheck disable=SC2086
 black ${pyfiles}
+
+# shellcheck disable=SC2086
 isort ${pyfiles}
