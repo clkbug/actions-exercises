@@ -52,3 +52,19 @@ image::https://picsum.photos/400/400[ランダムな画像]
 include::../python/a.py[]
 ----
 
+== グラフ
+
+PNG
+
+image::./plot.png[PNG]
+
+SVG
+
+image::./plot.svg[svg]
+
+
+ifeval::["{backend}" == "html5"]
+++++
+<iframe src="./plot.html" width=1024 height=768></iframe>
+++++
+endif::[]
