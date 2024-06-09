@@ -2,6 +2,9 @@ library(tidyverse)
 library(magrittr)
 library(plotly)
 library(htmlwidgets)
+library(reticulate)
+
+use_python("/usr/bin/python")
 
 data <- read_delim("data.txt", delim = " ", col_names = c("t", "value")) %>%
   mutate(index = row_number())
