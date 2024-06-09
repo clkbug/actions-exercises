@@ -58,9 +58,9 @@ PNG
 
 // image::./plot.png[PNG]
 
-SVG
+// SVG
 
-image::./plot.svg[svg]
+// image::./plot.svg[svg]
 
 
 ifeval::["{backend}" == "html5"]
