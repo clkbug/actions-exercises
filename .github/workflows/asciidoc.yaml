@@ -44,7 +44,7 @@ jobs:
           packages: rubygems make
           version: 1.0
       - name: Setup Asciidoc (gem cache restore)
-        id: cache-gems
+        id: cache-gems-restore
         uses: actions/cache/restore@v4
         with:
           path: |
@@ -56,6 +56,13 @@ jobs:
           echo /vendor/cache/bin >> $GITHUB_PATH
           ls -lha /vendor/cache
           ls -lha /vendor/cache/bin
+      - name: Cache Gems
+        id: cache-gems
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            /vendor/cache
+          key: ${{ steps.cache-gems-restore.outputs.cache-primary-key }}
       - name: Setup R Environment (apt cached)
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
@@ -75,10 +82,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Save Primes
-        id: cache-primes-save
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            /vendor/cache
-          key: ${{ steps.cache-gems.outputs.cache-primary-key }}
