@@ -34,10 +34,26 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Setup Asciidoc
+      # - name: Setup Asciidoc
+      #   run: |
+      #     sudo apt install rubygems make
+      #     sudo gem install asciidoctor asciidoctor-pdf
+      - name: Setup Asciidoc (apt cached)
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: rubygems make
+          version: 1.0
+      - name: Setup Asciidoc (gem cache restore)
+        id: cache-gems
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            /vendor/cache
+          key: ${{ runner.os }}-gem
+      - name: Setup Asciidoc (gem)
         run: |
-          sudo apt install rubygems make
-          sudo gem install asciidoctor asciidoctor-pdf
+          sudo gem install --install-dir /vendor/cache asciidoctor asciidoctor-pdf
+          echo /vendor/cache/bin >> $GITHUB_PATH
       - name: Setup R Environment
         run: |
           sudo apt install r-cran-plotly r-cran-tidyverse r-cran-reticulate r-cran-htmlwidgets python3-plotly
@@ -55,3 +71,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Save Primes
+        id: cache-primes-save
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            /vendor/cache
+          key: ${{ steps.cache-gems.outputs.cache-primary-key }}
