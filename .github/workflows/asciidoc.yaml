@@ -54,6 +54,8 @@ jobs:
         run: |
           sudo gem install --install-dir /vendor/cache asciidoctor asciidoctor-pdf
           echo /vendor/cache/bin >> $GITHUB_PATH
+          ls -lha /vendor/cache
+          ls -lha /vendor/cache/bin
       - name: Setup R Environment (apt cached)
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
