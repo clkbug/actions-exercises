@@ -62,7 +62,7 @@ jobs:
           packages: r-cran-plotly r-cran-tidyverse r-cran-reticulate r-cran-htmlwidgets python3-plotly
           version: 1.0
       - name: Build
-        run: make -C docs html
+        run: make -C docs ACIIDOCTOR=/vendor/cache/bin/asciidoctor ASCIIDOCTORPDF=/vendor/cache/bin/asciidoctor-pdf html
       - name: Update data
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
