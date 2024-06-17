@@ -54,9 +54,11 @@ jobs:
         run: |
           sudo gem install --install-dir /vendor/cache asciidoctor asciidoctor-pdf
           echo /vendor/cache/bin >> $GITHUB_PATH
-      - name: Setup R Environment
-        run: |
-          sudo apt install r-cran-plotly r-cran-tidyverse r-cran-reticulate r-cran-htmlwidgets python3-plotly
+      - name: Setup R Environment (apt cached)
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: r-cran-plotly r-cran-tidyverse r-cran-reticulate r-cran-htmlwidgets python3-plotly
+          version: 1.0
       - name: Build
         run: make -C docs html
       - name: Update data
