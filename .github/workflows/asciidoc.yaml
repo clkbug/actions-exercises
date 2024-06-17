@@ -54,6 +54,8 @@ jobs:
         run: |
           sudo gem install --install-dir /vendor/cache asciidoctor asciidoctor-pdf
           echo /vendor/cache/bin >> $GITHUB_PATH
+          echo GEM_HOME=/vendor/cache/ >> $GITHUB_ENV
+          echo GEM_PATH=/vendor/cache/ >> $GITHUB_ENV
           ls -lha /vendor/cache
           ls -lha /vendor/cache/bin
       - name: Cache Gems
