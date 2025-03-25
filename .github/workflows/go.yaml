@@ -208,7 +208,7 @@ jobs:
           reporter: github-pr-review
           filter_mode: nofilter
           fail_level: any
-          # workdir: ./_testdata/
+          workdir: ./
 
   misspell:
     name: runner / misspell
